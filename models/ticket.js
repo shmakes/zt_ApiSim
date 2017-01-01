@@ -1,4 +1,4 @@
-NOSQLMEMORY('tickets');
+//NOSQLMEMORY('tickets'); This currently breaks updates.
 NEWSCHEMA('Ticket').make(function(schema) {
 
 	schema.define('ticket_no', String, true);
@@ -60,7 +60,6 @@ NEWSCHEMA('Ticket').make(function(schema) {
 
 		filter.callback(function(err, docs, count) {
 			
-			// let's create object which will be returned
 			var data = {};
 			data.count = count;
 			data.items = docs;
@@ -77,7 +76,7 @@ NEWSCHEMA('Ticket').make(function(schema) {
 
 		NOSQL('tickets')
 			.one()
-			.where('id', id)
+			.where('ticket_no', id)
 			.callback(function(err, ticket){
 
 				callback({success: !!ticket, data: ticket});
@@ -88,18 +87,12 @@ NEWSCHEMA('Ticket').make(function(schema) {
 
 	schema.setSave(function(error, model, options, callback) {
 
-		// if there's no id then it's an insert otherwise update
-		var isNew = model.id ? false : true;
-
-		// create id if it's new
-		if(isNew) model.id = UID(); //UID returns string such as 16042321110001yfg
-
 		NOSQL('tickets')
-			.upsert(model) // update or insert
-			.where('id', model.id)
+			.update(model, model)
+			.where('ticket_no', model.ticket_no)
 			.callback(function() {
 
-				callback({success: true, id: model.id});
+				callback({success: true, id: model.ticket_no});
 
 			});
 	});
@@ -109,7 +102,7 @@ NEWSCHEMA('Ticket').make(function(schema) {
 
 		NOSQL('tickets')
 			.remove()
-			.where('id', id)
+			.where('ticket_no', id)
 			.callback(function(){
 
 				callback({success: true});

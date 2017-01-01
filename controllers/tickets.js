@@ -1,9 +1,8 @@
 F.route('/admin/tickets',       query,  ['*Ticket']);
 F.route('/admin/tickets/{id}',  get,    ['*Ticket']);
-F.route('/admin/tickets/{id}',  get,    ['*Ticket']);
+F.route('/admin/tickets/{id}',  save,   ['*Ticket', 'put']);
 F.route('/admin/tickets',       save,   ['*Ticket', 'post']);
 F.route('/admin/tickets/{id}',  remove, ['*Ticket', 'delete']);
-
 
 function query() {
 	var self = this;
@@ -18,12 +17,9 @@ function get(id) {
 	this.$get(id, self.callback());	
 }
 
-function save() {
+function save(id) {
 	var self = this;
 	this.body.$save(self.callback());
-	// another way to use it is
-	// this.$save(this.body, self.callback());
-	
 }
 
 function remove(id) {

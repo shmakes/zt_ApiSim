@@ -1,11 +1,11 @@
-NOSQLMEMORY('customers');
+//NOSQLMEMORY('tickets'); This currently breaks updates.
 NEWSCHEMA('Customer').make(function(schema) {
 
 	schema.define('customer_name', String, true);
 	schema.define('customer_account_number', String, true);
-	schema.define('customer_landline_1', String, true);
-	schema.define('customer_landline_2', String, true);
-	schema.define('customer_loyalty_id', String, true);
+	schema.define('customer_landline_1', String);
+	schema.define('customer_landline_2', String);
+	schema.define('customer_loyalty_id', String);
 	schema.define('email', String);
 	schema.define('contact_name', String);
 	schema.define('contact_mobile_number_1', String);
@@ -65,7 +65,7 @@ NEWSCHEMA('Customer').make(function(schema) {
 
 		NOSQL('customers')
 			.one()
-			.where('id', id)
+			.where('customer_account_number', id)
 			.callback(function(err, customer){
 
 				callback({success: !!customer, data: customer});
@@ -76,20 +76,15 @@ NEWSCHEMA('Customer').make(function(schema) {
 
 	schema.setSave(function(error, model, options, callback) {
 
-		// if there's no id then it's an insert otherwise update
-		var isNew = model.id ? false : true;
-
-		// create id if it's new
-		if(isNew) model.id = UID(); //UID returns string such as 16042321110001yfg
-
 		NOSQL('customers')
-			.upsert(model) // update or insert
-			.where('id', model.id)
+			.update(model, model)
+			.where('customer_account_number', model.customer_account_number)
 			.callback(function() {
 
-				callback({success: true, id: model.id});
+				callback({success: true, id: model.customer_account_number});
 
 			});
+
 	});
 
 	// Remove a specific customer
@@ -97,7 +92,7 @@ NEWSCHEMA('Customer').make(function(schema) {
 
 		NOSQL('customers')
 			.remove()
-			.where('id', id)
+			.where('customer_account_number', id)
 			.callback(function(){
 
 				callback({success: true});
