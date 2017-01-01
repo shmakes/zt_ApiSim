@@ -1,13 +1,3 @@
-F.route('/SugarCRMZahid/',    fetch,  ['*Ticket', 'post']);
-
-function fetch() {
-	var self = this;
-	self.$query(self.query, function(err, result){
-		result['query'] = self.query;
-		self.json(result);
-	});
-}
-
 F.route('/admin/tickets',       query,  ['*Ticket']);
 F.route('/admin/tickets/{id}',  get,    ['*Ticket']);
 F.route('/admin/tickets/{id}',  get,    ['*Ticket']);
@@ -40,7 +30,3 @@ function remove(id) {
 	var self = this;
 	this.$remove(id, self.callback());
 }
-
-F.on('request', function(req, res){
-	console.log(`[${req.method}] ${req.url}`); 
-});

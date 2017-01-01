@@ -29,10 +29,20 @@ NEWSCHEMA('Customer').make(function(schema) {
 			options.page = 0;
 		var take = U.parseInt(options.max);
 		var skip = U.parseInt(options.page * options.max);
+		var minDate = options.modifyFromDate || '';
+		var maxDate = options.modifyToDate || '';
+
 		var filter = NOSQL('customers').find();
 
 		filter.take(take);
 		filter.skip(skip);
+		
+		if (minDate) {
+			filter.where('modify_date', '>', minDate);
+		}
+		if (maxDate) {
+			filter.where('modify_date', '<=', maxDate);
+		}
 
 		if(options.sort) filter.sort(options.sort);
 

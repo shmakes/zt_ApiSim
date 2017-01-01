@@ -1,13 +1,3 @@
-F.route('/SugarCRMZahid/customer',    fetch,  ['*Customer', 'post']);
-
-function fetch() {
-	var self = this;
-	self.$query(self.query, function(err, result){
-		result['query'] = self.query;
-		self.json(result);
-	});
-}
-
 F.route('/admin/customers',       query,  ['*Customer']);
 F.route('/admin/customers/{id}',  get,    ['*Customer']);
 F.route('/admin/customers/{id}',  get,    ['*Customer']);
@@ -40,7 +30,3 @@ function remove(id) {
 	var self = this;
 	this.$remove(id, self.callback());
 }
-
-F.on('request', function(req, res){
-	console.log(`[${req.method}] ${req.url}`); 
-});
