@@ -27,12 +27,12 @@ NEWSCHEMA('Customer').make(function(schema) {
 		options.max = U.parseInt(options.max, 20);
 		if (options.page < 0)
 			options.page = 0;
-		var take = U.parseInt(options.max);
-		var skip = U.parseInt(options.page * options.max);
-		var minDate = options.modifyFromDate || '';
-		var maxDate = options.modifyToDate || '';
+		let take = U.parseInt(options.max);
+		let skip = U.parseInt(options.page * options.max);
+		let minDate = options.modifyFromDate || '';
+		let maxDate = options.modifyToDate || '';
 
-		var filter = NOSQL('customers').find();
+		let filter = NOSQL('customers').find();
 
 		filter.take(take);
 		filter.skip(skip);
@@ -49,7 +49,7 @@ NEWSCHEMA('Customer').make(function(schema) {
 		filter.callback(function(err, docs, count) {
 			
 			// let's create object which will be returned
-			var data = {};
+			let data = {};
 			data.count = count;
 			data.items = docs;
 			data.limit = options.max;

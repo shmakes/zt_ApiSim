@@ -5,7 +5,7 @@ F.route('/admin/tickets',       save,   ['*Ticket', 'post']);
 F.route('/admin/tickets/{id}',  remove, ['*Ticket', 'delete']);
 
 function query() {
-	var self = this;
+	let self = this;
 	self.$query(self.query, function(err, result){
 		result['query'] = self.query;
 		self.json(result);
@@ -13,16 +13,16 @@ function query() {
 }
 
 function get(id) {
-	var self = this;
+	let self = this;
 	this.$get(id, self.callback());	
 }
 
 function save(id) {
-	var self = this;
+	let self = this;
 	this.body.$save(self.callback());
 }
 
 function remove(id) {
-	var self = this;
+	let self = this;
 	this.$remove(id, self.callback());
 }
