@@ -1,0 +1,28 @@
+{
+  "name": "zt_api_sim",
+  "version": "1.0.0",
+  "description": "# Install",
+  "main": "index.js",
+  "dependencies": {
+    "total.js": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shmakes/zt_ApiSim"
+  },
+  "keywords": [
+    "total.js",
+    "node"
+  ],
+  "author": "Steve Schmechel <shmakes@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "hhttps://github.com/shmakes/zt_ApiSim/issues"
+  },
+  "homepage": "https://github.com/shmakes/zt_ApiSim#readme"
+}
