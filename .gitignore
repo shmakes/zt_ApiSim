@@ -41,5 +41,4 @@ jspm_packages
 *.swp
 
 # Databases
-tickets.nosql
-customers.nosql
+databases

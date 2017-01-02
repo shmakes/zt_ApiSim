@@ -1,0 +1,321 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Ameyo",
+		"_postman_id": "6525cb1e-5feb-5f17-1ddc-13af083acaa2",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sim Fetch Ticket Detail",
+			"request": {
+				"url": "{{host}}/SugarCRMZahid/indexphp?entryPoint=fetchTicketDetail",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "8bd726adcdcc3564fa840361e18618aa",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"modifyFromDate\":\"2016-06-19T00:00:00Z\",\r\n  \"modifyToDate\":\"2016-07-01T00:00:00Z\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Sim Ticket Update",
+			"request": {
+				"url": "{{host}}/SugarCRMZahid/indexphp?entryPoint=ticketUpdate",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "8bd726adcdcc3564fa840361e18618aa",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ticket_no\": \"1233\",\n    \"region\": \"ER\",\n    \"branch\": \"Jeddah\",\n    \"ticket_status\": \"Open\",\n    \"customer_name\": \"Honda\",\n    \"contact_name\": \"Kabir\",\n    \"contact_mobile_no\": \"9981658\",\n    \"category\": \"Field_service\",\n    \"segment\": \"EPG\",\n    \"technician\": \"Mechanic\",\n    \"compartment\": \"DriveTrain\",\n    \"equipment_condition\": \"Down\",\n    \"model\": \"SJF123\",\n    \"serial_no\": \"22345\",\n    \"city\": \"Jeddah\",\n    \"location_direction\": \"xxx\",\n    \"technical_contact_name\": \"Mohammad\",\n    \"technical_contact_number\": \"463232\",\n    \"advisor_instructions\": \"xxx\",\n    \"job_type\": \"Cash\",\n    \"job_status\": \"NotStarted\",\n    \"instpection_flag\": \"\",\n    \"scheduled_hours\": \"1.5\",\n    \"job_scope\": \"Inspection\",\n    \"number_visit\": \"3\",\n    \"planner_status\": \"unassigned\",\n    \"scheduled_date\": \"2016-05-25T15:12:42Z\",\n    \"planning_date\": \"2016-05-25T15:12:42Z\",\n    \"technician_name\": \"ahmed2\",\n    \"modify_date\": \"2016-06-25T15:12:43Z\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Sim Fetch Customer Detail",
+			"request": {
+				"url": "{{host}}/SugarCRMZahid/indexphp?entryPoint=fetchCustomerDetail",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "8bd726adcdcc3564fa840361e18618aa",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"modifyFromDate\":\"2016-06-19T00:00:00Z\",\r\n  \"modifyToDate\":\"2016-07-01T00:00:00Z\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Get Tickets",
+			"request": {
+				"url": "{{host}}/admin/tickets",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ticketNo\":\"2341\",\r\n  \"job_status\":\"NotStarted\",\r\n  \"work_orderNo\":\"7654\",\r\n  \"inspection_flag\":\"Yes\",\r\n  \"scheduled_hours\":\" 15:12:42 \",\r\n  \"job_scope\":\"Inspection\",\r\n  \"number_visit\":\"2\",\r\n  \"planner_status\":\"unassigned\",\r\n  \"scheduled_date\":\" 2016-05-2515:12:42\",\r\n  \"planning_date\":\" 2016-05-2515:12:42\",\r\n  \"technician\":\"Mechanic\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Get Tickets Date Range",
+			"request": {
+				"url": "{{host}}/admin/tickets?modifyFromDate=2016-06-01T00:00:00Z&modifyToDate=2016-07-01T00:00:00Z",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ticketNo\":\"2341\",\r\n  \"job_status\":\"NotStarted\",\r\n  \"work_orderNo\":\"7654\",\r\n  \"inspection_flag\":\"Yes\",\r\n  \"scheduled_hours\":\" 15:12:42 \",\r\n  \"job_scope\":\"Inspection\",\r\n  \"number_visit\":\"2\",\r\n  \"planner_status\":\"unassigned\",\r\n  \"scheduled_date\":\" 2016-05-2515:12:42\",\r\n  \"planning_date\":\" 2016-05-2515:12:42\",\r\n  \"technician\":\"Mechanic\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Add Ticket",
+			"request": {
+				"url": "{{host}}/admin/tickets",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ticket_no\": \"1235\",\n\t\"region\": \"ER\",\n\t\"branch\": \"Jeddah\",\n\t\"ticket_status\": \"Open\",\n\t\"customer_name\": \"Honda\",\n\t\"contact_name\": \"Kabir\",\n\t\"contact_mobile_no\": \"9981658\",\n\t\"category\": \"Field_service\",\n\t\"segment\": \"EPG\",\n\t\"technician\": \"Mechanic\",\n\t\"compartment\": \"DriveTrain\",\n\t\"equipment_condition\": \"Down\",\n\t\"model\": \"SJF123\",\n\t\"serial_no\": \"22345\",\n\t\"city\": \"Jeddah\",\n\t\"location_direction\": \"xxx\",\n\t\"technical_contact_name\": \"Mohammad\",\n\t\"technical_contact_number\": \"463232\",\n\t\"advisor_instructions\": \"xxx\",\n    \"job_type\": \"Cash\",\n\t\"job_status\": \"NotStarted\",\n\t\"inspection_flag\": \"Yes\",\n\t\"scheduled_hours\": \"1.5\",\n\t\"job_scope\": \"Inspection\",\n\t\"number_visit\": \"3\",\n\t\"planner_status\": \"unassigned\",\n\t\"scheduled_date\": \"2016-05-25T15:12:42Z\",\n\t\"planning_date\": \"2016-05-25T15:12:42Z\",\n\t\"technician_name\": \"ahmed\",\n\t\"modify_date\": \"2016-08-25T15:12:45Z\"\n\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Get Ticket",
+			"request": {
+				"url": "{{host}}/admin/tickets/1233",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ticketNo\":\"2341\",\r\n  \"job_status\":\"NotStarted\",\r\n  \"work_orderNo\":\"7654\",\r\n  \"inspection_flag\":\"Yes\",\r\n  \"scheduled_hours\":\" 15:12:42 \",\r\n  \"job_scope\":\"Inspection\",\r\n  \"number_visit\":\"2\",\r\n  \"planner_status\":\"unassigned\",\r\n  \"scheduled_date\":\" 2016-05-2515:12:42\",\r\n  \"planning_date\":\" 2016-05-2515:12:42\",\r\n  \"technician\":\"Mechanic\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Update Ticket",
+			"request": {
+				"url": "{{host}}/admin/tickets/1233",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ticket_no\": \"1233\",\n    \"region\": \"ER\",\n    \"branch\": \"Jeddah\",\n    \"ticket_status\": \"Open\",\n    \"customer_name\": \"Honda\",\n    \"contact_name\": \"Kabir\",\n    \"contact_mobile_no\": \"9981658\",\n    \"category\": \"Field_service\",\n    \"segment\": \"EPG\",\n    \"technician\": \"Mechanic\",\n    \"compartment\": \"DriveTrain\",\n    \"equipment_condition\": \"Down\",\n    \"model\": \"SJF123\",\n    \"serial_no\": \"22345\",\n    \"city\": \"Jeddah\",\n    \"location_direction\": \"xxx\",\n    \"technical_contact_name\": \"Mohammad\",\n    \"technical_contact_number\": \"463232\",\n    \"advisor_instructions\": \"xxx\",\n    \"job_type\": \"Cash\",\n    \"job_status\": \"NotStarted\",\n    \"instpection_flag\": \"\",\n    \"scheduled_hours\": \"1.5\",\n    \"job_scope\": \"Inspection\",\n    \"number_visit\": \"3\",\n    \"planner_status\": \"unassigned\",\n    \"scheduled_date\": \"2016-05-25T15:12:42Z\",\n    \"planning_date\": \"2016-05-25T15:12:42Z\",\n    \"technician_name\": \"ahmed2\",\n    \"modify_date\": \"2016-06-25T15:12:43Z\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Get Customers",
+			"request": {
+				"url": "{{host}}/admin/customers",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ticketNo\":\"2341\",\r\n  \"job_status\":\"NotStarted\",\r\n  \"work_orderNo\":\"7654\",\r\n  \"inspection_flag\":\"Yes\",\r\n  \"scheduled_hours\":\" 15:12:42 \",\r\n  \"job_scope\":\"Inspection\",\r\n  \"number_visit\":\"2\",\r\n  \"planner_status\":\"unassigned\",\r\n  \"scheduled_date\":\" 2016-05-2515:12:42\",\r\n  \"planning_date\":\" 2016-05-2515:12:42\",\r\n  \"technician\":\"Mechanic\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Get Customers Date Range",
+			"request": {
+				"url": "{{host}}/admin/customers?modifyFromDate=2016-06-01T00:00:00Z&modifyToDate=2016-07-01T00:00:00Z",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ticketNo\":\"2341\",\r\n  \"job_status\":\"NotStarted\",\r\n  \"work_orderNo\":\"7654\",\r\n  \"inspection_flag\":\"Yes\",\r\n  \"scheduled_hours\":\" 15:12:42 \",\r\n  \"job_scope\":\"Inspection\",\r\n  \"number_visit\":\"2\",\r\n  \"planner_status\":\"unassigned\",\r\n  \"scheduled_date\":\" 2016-05-2515:12:42\",\r\n  \"planning_date\":\" 2016-05-2515:12:42\",\r\n  \"technician\":\"Mechanic\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Add Customer",
+			"request": {
+				"url": "{{host}}/admin/customers",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"customer_name\":\"CCC\",\n\t\"customer_account_number\":\"1003\",\n\t\"customer_landline_1\":\"3232132331\",\n\t\"customer_landline_2\":\"3231231231\",\n\t\"customer_loyalty_id\":\"32132\",\n\t\"email\":\"​ email@abc.com​ \",\n\t\"contact_name\":\"ABCD\",\n\t\"contact_mobile_number_1\":\"9884324224\",\n\t\"job_title\":\"Supervisor\",\n\t\"contact_id\":\"xxxxxx\",\n\t\"address\":\"zzz\",\n\t\"city\":\"Jeddah\",\n\t\"region\":\"ER\",\n\t\"postal_code\":\"2568\",\n\t\"country\":\"KSA\",\n\t\"site_name\":\"aaa\",\n\t\"site_number\":\"46\",\n\t\"modify_date\": \"2016-07-25T15:12:43Z\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Get Customer",
+			"request": {
+				"url": "{{host}}/admin/customers/17010107060001dux1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ticketNo\":\"2341\",\r\n  \"job_status\":\"NotStarted\",\r\n  \"work_orderNo\":\"7654\",\r\n  \"inspection_flag\":\"Yes\",\r\n  \"scheduled_hours\":\" 15:12:42 \",\r\n  \"job_scope\":\"Inspection\",\r\n  \"number_visit\":\"2\",\r\n  \"planner_status\":\"unassigned\",\r\n  \"scheduled_date\":\" 2016-05-2515:12:42\",\r\n  \"planning_date\":\" 2016-05-2515:12:42\",\r\n  \"technician\":\"Mechanic\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Update Customer",
+			"request": {
+				"url": "{{host}}/admin/customers/17010107060001dux1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customer_name\": \"ABC\",\n    \"customer_account_number\": \"2324\",\n    \"customer_landline_1\": \"3232132331\",\n    \"customer_landline_2\": \"3231231231\",\n    \"customer_loyalty_id\": \"32132\",\n    \"email\": \"​ email@abc.com​\",\n    \"contact_name\": \"ABCD\",\n    \"contact_mobile_number_1\": \"9884324224\",\n    \"job_title\": \"Supervisor\",\n    \"contact_id\": \"xxxxxx\",\n    \"address\": \"zzz\",\n    \"city\": \"Jeddah\",\n    \"region\": \"ER\",\n    \"postal_code\": \"2568\",\n    \"country\": \"KSA\",\n    \"site_name\": \"aaa\",\n    \"site_number\": \"46\",\n    \"modify_date\": \"2016-05-25T15:12:44Z\",\n    \"id\": \"17010107060001dux1\"\n  }"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
