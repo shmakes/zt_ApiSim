@@ -31,7 +31,6 @@ NEWSCHEMA('Ticket').make(function(schema) {
 	schema.define('scheduled_date', String);
 	schema.define('planning_date', String);
 	schema.define('technician_name', String);
-	schema.define('modify_date', String);
 
 	// Query tickets
 	schema.setQuery(function(error, options, callback) {
@@ -51,10 +50,10 @@ NEWSCHEMA('Ticket').make(function(schema) {
 		filter.skip(skip);
 		
 		if (minDate) {
-			filter.where('modify_date', '>', minDate);
+			filter.where('date_modified', '>', minDate);
 		}
 		if (maxDate) {
-			filter.where('modify_date', '<=', maxDate);
+			filter.where('date_modified', '<=', maxDate);
 		}
 
 		if(options.sort) filter.sort(options.sort);

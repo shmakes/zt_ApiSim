@@ -14,7 +14,7 @@ NEWSCHEMA('Customer').make(function(schema) {
 	schema.define('country', String);
 	schema.define('site_name', String);
 	schema.define('site_number', String);
-	schema.define('modify_date', String);
+	schema.define('date_modified', String);
 
 	// Query customers
 	schema.setQuery(function(error, options, callback) {
@@ -34,10 +34,10 @@ NEWSCHEMA('Customer').make(function(schema) {
 		filter.skip(skip);
 		
 		if (minDate) {
-			filter.where('modify_date', '>', minDate);
+			filter.where('date_modified', '>', minDate);
 		}
 		if (maxDate) {
-			filter.where('modify_date', '<=', maxDate);
+			filter.where('date_modified', '<=', maxDate);
 		}
 
 		if(options.sort) filter.sort(options.sort);
