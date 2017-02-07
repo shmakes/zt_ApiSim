@@ -2,12 +2,13 @@
 NEWSCHEMA('Ticket').make(function(schema) {
 
 	schema.define('ticket_no', String, true);
+	schema.define('advisor_instructions', String);
+	schema.define('date_modified', String);
+	schema.define('ticket_status', String);
 	schema.define('region', String);
 	schema.define('branch', String);
-	schema.define('ticket_status', String);
 	schema.define('customer_name', String);
 	schema.define('contact_name', String);
-	schema.define('contact_mobile_no', String);
 	schema.define('category', String);
 	schema.define('segment', String);
 	schema.define('technician', String);
@@ -19,13 +20,13 @@ NEWSCHEMA('Ticket').make(function(schema) {
 	schema.define('location_direction', String);
 	schema.define('technical_contact_name', String);
 	schema.define('technical_contact_number', String);
-	schema.define('advisor_instructions', String);
 	schema.define('job_type', String);
 	schema.define('job_status', String);
 	schema.define('instpection_flag', String);
 	schema.define('scheduled_hours', String);
 	schema.define('job_scope', String);
 	schema.define('number_visit', String);
+	schema.define('contact_mobile_no', String);
 	schema.define('planner_status', String);
 	schema.define('scheduled_date', String);
 	schema.define('planning_date', String);

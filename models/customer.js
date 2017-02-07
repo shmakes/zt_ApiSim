@@ -1,16 +1,12 @@
 //NOSQLMEMORY('tickets'); This currently breaks updates.
 NEWSCHEMA('Customer').make(function(schema) {
 
-	schema.define('customer_name', String, true);
 	schema.define('customer_account_number', String, true);
+	schema.define('customer_name', String, true);
 	schema.define('customer_landline_1', String);
 	schema.define('customer_landline_2', String);
 	schema.define('customer_loyalty_id', String);
-	schema.define('email', String);
-	schema.define('contact_name', String);
-	schema.define('contact_mobile_number_1', String);
-	schema.define('job_title', String);
-	schema.define('contact_id', String);
+	schema.define('contacts', '[Contact]');
 	schema.define('address', String);
 	schema.define('city', String);
 	schema.define('region', String);
