@@ -1,20 +1,19 @@
 //NOSQLMEMORY('tickets'); This currently breaks updates.
 NEWSCHEMA('Customer').make(function(schema) {
 
-	schema.define('customer_account_number', String, true);
 	schema.define('customer_name', String, true);
 	schema.define('customer_landline_1', String);
 	schema.define('customer_landline_2', String);
 	schema.define('customer_loyalty_id', String);
-	schema.define('contacts', '[Contact]');
-	schema.define('address', String);
-	schema.define('city', String);
-	schema.define('region', String);
-	schema.define('postal_code', String);
 	schema.define('country', String);
+	schema.define('customer_id', String, true);
 	schema.define('site_name', String);
 	schema.define('site_number', String);
+	schema.define('postal_code', String);
+	schema.define('customer_account_number', String, true);
 	schema.define('date_modified', String);
+	schema.define('cus_deleted', String);
+	schema.define('contact', '[Contact]');
 
 	// Query customers
 	schema.setQuery(function(error, options, callback) {
@@ -61,7 +60,7 @@ NEWSCHEMA('Customer').make(function(schema) {
 
 		NOSQL('customers')
 			.one()
-			.where('customer_account_number', id)
+			.where('customer_id', id)
 			.callback(function(err, customer){
 
 				callback({success: !!customer, data: customer});
@@ -74,10 +73,10 @@ NEWSCHEMA('Customer').make(function(schema) {
 
 		NOSQL('customers')
 			.update(model, model)
-			.where('customer_account_number', model.customer_account_number)
+			.where('customer_id', model.customer_id)
 			.callback(function() {
 
-				callback({success: true, id: model.customer_account_number});
+				callback({success: true, id: model.customer_id});
 
 			});
 
@@ -88,7 +87,7 @@ NEWSCHEMA('Customer').make(function(schema) {
 
 		NOSQL('customers')
 			.remove()
-			.where('customer_account_number', id)
+			.where('customer_id', id)
 			.callback(function(){
 
 				callback({success: true});

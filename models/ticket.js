@@ -1,8 +1,9 @@
 //NOSQLMEMORY('tickets'); This currently breaks updates.
 NEWSCHEMA('Ticket').make(function(schema) {
 
+	schema.define('customer_id', String, true);
 	schema.define('ticket_no', String, true);
-	schema.define('advisor_instructions', String);
+	schema.define('advisor_instruction', String);
 	schema.define('date_modified', String);
 	schema.define('ticket_status', String);
 	schema.define('region', String);
@@ -22,7 +23,7 @@ NEWSCHEMA('Ticket').make(function(schema) {
 	schema.define('technical_contact_number', String);
 	schema.define('job_type', String);
 	schema.define('job_status', String);
-	schema.define('instpection_flag', String);
+	schema.define('inspection_flag', String);
 	schema.define('scheduled_hours', String);
 	schema.define('job_scope', String);
 	schema.define('number_visit', String);
@@ -31,6 +32,9 @@ NEWSCHEMA('Ticket').make(function(schema) {
 	schema.define('scheduled_date', String);
 	schema.define('planning_date', String);
 	schema.define('technician_name', String);
+	schema.define('work_order_no', String);
+	schema.define('f_and_a_approval', String);
+	schema.define('deleted', String);
 
 	// Query tickets
 	schema.setQuery(function(error, options, callback) {
