@@ -2,7 +2,7 @@ F.route('/SugarCRMZahid/index.php', zt, ['post']);
 
 function zt() {
 	let self = this;
-	let auth = self.req.headers.authorization
+	let auth = self.req.headers.authorization;
 	if (auth.length !== 32) {
 		self.json({ 
 			status: 'failure',
@@ -39,23 +39,39 @@ function zt() {
             .find()
             .where('ticket_no', body.ticket_no)
             .callback(function(err, data) {
-                let existing = data[0];
+                let existing = data.length === 0 ? body : data[0];
 
-                existing.inspection_flag     = body.inspection_flag; // Yes/No
-                existing.scheduled_hours     = body.scheduled_hours; // Number
-                existing.job_scope           = body.job_scope;       // Inspection/Repair
-                existing.number_visit        = body.number_visit;    // Number
-                existing.planner_status      = body.planner_status;  // ??????
-                existing.scheduled_date      = body.scheduled_date;  // DateTime
-                existing.planning_date       = body.planning_date;   // DateTime
-                existing.job_status          = body.job_status;      // ??????
+                // Currently, their API does no validation, so these all update.
+                if (true || body.inspection_flag == 'Yes' || body.inspection_flag == 'No') {
+                    existing.inspection_flag = body.inspection_flag; // Yes/No
+                }
+                if (true || !isNaN(parseFloat(body.scheduled_hours))) {
+                    existing.scheduled_hours = body.scheduled_hours; // Number
+                }
+                if (true || body.job_scope == 'Inspection' || body.job_scope == 'Repair') {
+                    existing.job_scope       = body.job_scope;       // Inspection/Repair
+                }
+                if (true || !isNaN(parseFloat(body.number_visit))) {
+                    existing.number_visit    = body.number_visit;    // Number
+                }
+                existing.planner_status      = body.planner_status;  // Whatever appt. status SP Sends
+                existing.scheduled_date      = resolveDateOrDefault(body.scheduled_date, '1970-01-01');  // DateTime or it goes to 1970-01-01
+                existing.planning_date       = resolveDateOrDefault(body.planning_date, '1970-01-01');   // DateTime or it goes to 1970-01-01
+                if (body.job_status == 'Work started' || body.job_status == 'Completed') {
+                    existing.job_status      = body.job_status;      // Work started/Completed ... etc.???
+                }
                 existing.model               = body.model;
                 existing.serial_no           = body.serial_no;
                 existing.city                = body.city;
                 existing.location_direction  = body.location_direction;
                 existing.advisor_instruction = body.advisor_instruction;
                 existing.technician_name     = body.technician_name;
-
+                existing.delivery_date       = resolveDateOrDefault(body.delivery_date, null); // DateTime or it goes to null.
+                if (!isNaN(parseInt(body.shm))) {
+                    existing.shm             = parseInt(body.shm); // Truncates to integer. If it can't, then zero.
+                } else {
+                    existing.shm             = 0;
+                }
                 existing.date_modified = new Date().toISOString().replace("T"," ").replace(/\..*$/g, "");
                 updateById(self, 'tickets', existing, 'ticket_no', existing.ticket_no);
             });
@@ -146,3 +162,7 @@ function updateById(self, schema, body, idField, idValue) {
 	});
 }
 
+function resolveDateOrDefault(dateString, defaultValue) {
+    var timestamp=Date.parse(dateString)
+    return (isNaN(timestamp)==false) ? dateString : defaultValue;
+}

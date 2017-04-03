@@ -5,7 +5,6 @@ NEWSCHEMA('Ticket').make(function(schema) {
 	schema.define('ticket_no', String, true);
 	schema.define('advisor_instruction', String);
 	schema.define('date_modified', String);
-	schema.define('ticket_status', String);
 	schema.define('region', String);
 	schema.define('branch', String);
 	schema.define('customer_name', String);
@@ -33,6 +32,8 @@ NEWSCHEMA('Ticket').make(function(schema) {
 	schema.define('planning_date', String);
 	schema.define('technician_name', String);
 	schema.define('work_order_no', String);
+	schema.define('delivery_date', String);
+	schema.define('shm', String);
 	schema.define('f_and_a_approval', String);
 	schema.define('deleted', String);
 
