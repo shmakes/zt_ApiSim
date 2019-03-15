@@ -4,7 +4,7 @@
   "description": "# Install",
   "main": "index.js",
   "dependencies": {
-    "total.js": "^2.3.0"
+    "total.js": ">=3.2.3"
   },
   "devDependencies": {},
   "scripts": {
